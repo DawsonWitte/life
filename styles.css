@@ -1,0 +1,44 @@
+*{
+    background-color: #ededed;
+}
+
+.flex-container{
+    display: flex;
+    margin: 20px;
+}
+
+.text-container{
+    flex-grow: 1;
+}
+
+.title{
+    text-align: center;
+    color: black;
+}
+
+.grid-container{
+    display: flex;
+    flex-direction: row;
+    margin-left: 20px;
+    height: 95vh;
+    width: 95vh;
+    background-color: lightgray;
+    border: 2px solid black;
+}
+
+.column{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.row{
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    border: 1px solid black;
+}
+
+.clicked{
+    background-color: darkgray;
+}
