@@ -1,8 +1,7 @@
 //sets dimensions of the play area grid
-let dimension = 10;
+let dimension = 3;
 let color = document.querySelector('.color')
 let j = 0;
-let k=0;
 
 let draw = false;
 let run = false;
@@ -26,19 +25,15 @@ tst.addEventListener('click', () => {
 //button to stop and start the game
 const startbtn = document.querySelector('#startbtn');
 startbtn.addEventListener('click', () => {
-    k=0
     if (run == false) {
         run = true;
     } else if (run == true) {
         run = false;
     }
-})
-
-while (run==true) {
-    setTimeout(function(){
+    if (run==true) {
         cellUpdate();
-    }, 5000);
-}
+    }
+})
 
 //run to create the grid
 function gridCreation() {
@@ -78,9 +73,9 @@ function gridCreation() {
 }
 
 function cellUpdate() {
-    k=0
+    let k = 0;
     for (let i =0; i < dimension *dimension; i++) {
-        if (run === true && k < dimension*dimension) {
+        if (run == true && k < dimension*dimension) {
             let count = 0;
             if (lifeArray[k] == 1){
                 if (lifeArray[k-1]==1) {
@@ -127,6 +122,11 @@ function cellUpdate() {
     changeColors();
     for (let n=0; n < dimension*dimension; n++) {
         lifeArray[n] = placeHolder[n];
+    }
+    if (run==true) {
+        setTimeout(() => {
+            cellUpdate();
+        }, 2000);
     }
 }
 
