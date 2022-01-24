@@ -1,12 +1,11 @@
-//sets dimensions of the play area grid
-let dimension = 3;
+//sets dimensions of grid
+let dimension = 5;
+//sets the color that a living tile will change to
 let color = document.querySelector('.color')
-let j = 0;
 
-let draw = false;
 let run = false;
 
-const cellsArray = [];
+
 const lifeArray = [];
 const placeHolder = [];
 
@@ -14,12 +13,6 @@ const placeHolder = [];
 const btn = document.querySelector('#btn');
 btn.addEventListener('click', () => {
   gridCreation();
-});
-
-//button to test refreshing the cells
-const tst = document.querySelector('#testrefresh');
-tst.addEventListener('click', () => {
-  cellUpdate();
 });
 
 //button to stop and start the game
@@ -37,7 +30,7 @@ startbtn.addEventListener('click', () => {
 
 //run to create the grid
 function gridCreation() {
-    j = 0;
+    let j = 0;
     //creates columns
     for (let i = 0; i < dimension; i++) {
         const column = document.createElement('column'+i);
@@ -53,9 +46,8 @@ function gridCreation() {
             row.id=(j);
             lifeArray.push(0);
             placeHolder.push(0);
-            cellsArray.push(j);
 
-
+            //makes tiles clickable
             row.addEventListener('click', function(){
                 //changes color of tile
                 row.style.backgroundColor = 'black';
@@ -72,12 +64,13 @@ function gridCreation() {
     }
 }
 
+//updates cells
 function cellUpdate() {
     let k = 0;
     for (let i =0; i < dimension *dimension; i++) {
         if (run == true && k < dimension*dimension) {
             let count = 0;
-            if (lifeArray[k] == 1){
+            if (run==true){
                 if (lifeArray[k-1]==1) {
                     count++;
                 }
@@ -126,19 +119,17 @@ function cellUpdate() {
     if (run==true) {
         setTimeout(() => {
             cellUpdate();
-        }, 2000);
+        }, 1000);
     }
 }
 
+//changes background color of cells based on game rules
 function changeColors() {
     for (let l=0; l < dimension*dimension; l++) {
-        console.log(placeHolder[l])
         if (placeHolder[l] ==0) {
-            console.log(l + " is dead")
             var col=document.getElementById(l);
             col.style.backgroundColor = 'white';
         } else if (placeHolder[l] ==1) {
-            console.log(l + " is alive")
             var col=document.getElementById(l);
             col.style.backgroundColor = 'black';
         }
