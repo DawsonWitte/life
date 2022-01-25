@@ -1,7 +1,8 @@
 //sets dimensions of grid
-let dimension = 5;
+let dimension = 10;
 //sets the color that a living tile will change to
-let color = document.querySelector('.color')
+let color = "black"
+
 
 let run = false;
 
@@ -9,11 +10,25 @@ let run = false;
 const lifeArray = [];
 const placeHolder = [];
 
-//button to test the function
+//button to set grid size
 const btn = document.querySelector('#btn');
 btn.addEventListener('click', () => {
-  gridCreation();
+    let userSizeInput = document.getElementById('sizeInput').value;
+    dimension = parseInt(userSizeInput)
+    gridCreation();
 });
+
+//button to reset the grid
+const rstbtn = document.querySelector('#rstbtn');
+rstbtn.addEventListener('click', () => {
+  reset();
+});
+
+//button to change the color
+const clrbtn = document.querySelector('#clrbtn');
+clrbtn.addEventListener('click', () => {
+    color = document.getElementById('colorButton').value;
+  });
 
 //button to stop and start the game
 const startbtn = document.querySelector('#startbtn');
@@ -28,8 +43,19 @@ startbtn.addEventListener('click', () => {
     }
 })
 
+//run to reset the grid
+function reset(){
+    for (let i = 0; i < dimension*dimension; i++) {
+        lifeArray[i] = 0;
+        placeHolder[i] = 0;
+        var rstcol=document.getElementById(i);
+        rstcol.style.backgroundColor = 'white';
+    }
+}
+
 //run to create the grid
 function gridCreation() {
+    //dimension = document.getElementById("sizeInput").value; 
     let j = 0;
     //creates columns
     for (let i = 0; i < dimension; i++) {
@@ -50,7 +76,7 @@ function gridCreation() {
             //makes tiles clickable
             row.addEventListener('click', function(){
                 //changes color of tile
-                row.style.backgroundColor = 'black';
+                row.style.backgroundColor = color;
 
                 //changes tile state and updates array
                 var theClass = $(this).attr('class');
@@ -131,7 +157,7 @@ function changeColors() {
             col.style.backgroundColor = 'white';
         } else if (placeHolder[l] ==1) {
             var col=document.getElementById(l);
-            col.style.backgroundColor = 'black';
+            col.style.backgroundColor = color;
         }
     }
 }

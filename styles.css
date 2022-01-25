@@ -16,6 +16,20 @@
     color: black;
 }
 
+.controll-panel{
+    display: flex;
+    flex-direction: column;
+    height: .9vh;
+    flex-grow: 1;
+    height: 60vh;
+    justify-content: space-evenly;
+    margin-left: 5vw;
+}
+
+.buttons-container{
+    flex-direction: column;
+}
+
 .grid-container{
     display: flex;
     flex-direction: row;
