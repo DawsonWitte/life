@@ -20,24 +20,31 @@
             </div>
             <div class="controll-panel">
                 <div class="info-container">
-                    <P>Welcome to my version of Conway's game of life!</P>
+                    <P class="heading"><strong>How to play: </strong></P>
+                    <p>-Click the grid to create living cells</p>
+                    <br>
+                    <p class="heading"><strong>When you start the game: </strong></p>
+                    <p>-Any live cell with two or three live neighbours survives</p>
+                    <p>-Any dead cell with three live neighbours becomes a live cell</p>
+                    <P>-All other cells will be dead in the next generation</P>
                 </div>
                 <div class="color-container">
-                    <p>Enter a color for the living cells: </p>
-                    <input id="colorButton">
-                    <button id="clrbtn">Set</button>
+                    <p class="heading"><strong>Pick a color for the living cells:</strong></p>
+                    <input id="colorButton" type="color" class="btn-Style">
                 </div>
                 <div class="size-container">
-                    <p>Cells Per Row: </p>
-                    <input id="sizeInput">
-                    <button id="btn">Create Grid</button>
+                    <p class="heading"><strong>Cells Per Row: </strong></p>
+                    <div class="size-inputs">
+                        <input id="sizeInput">
+                        <button id="btn">Create Grid</button>
+                    </div>
                 </div>
                 <div class="buttons-container">
                     <div class="stop/start-container">
-                        <button id="startbtn">Start/Stop</button>
+                        <input type="button" id="startbtn" value="Start" class="btn-Style, start-style">
                     </div>
                     <div class="reset-container">
-                        <button id="rstbtn">Reset</button>
+                        <button id="rstbtn" class="btn-Style">Reset</button>
                     </div>
                 </div>
             </div>

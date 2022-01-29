@@ -3,9 +3,7 @@ let dimension = 10;
 //sets the color that a living tile will change to
 let color = "black"
 
-
 let run = false;
-
 
 const lifeArray = [];
 const placeHolder = [];
@@ -15,6 +13,7 @@ const btn = document.querySelector('#btn');
 btn.addEventListener('click', () => {
     let userSizeInput = document.getElementById('sizeInput').value;
     dimension = parseInt(userSizeInput)
+    gridDeleation();
     gridCreation();
 });
 
@@ -24,18 +23,16 @@ rstbtn.addEventListener('click', () => {
   reset();
 });
 
-//button to change the color
-const clrbtn = document.querySelector('#clrbtn');
-clrbtn.addEventListener('click', () => {
-    color = document.getElementById('colorButton').value;
-  });
+
 
 //button to stop and start the game
 const startbtn = document.querySelector('#startbtn');
 startbtn.addEventListener('click', () => {
     if (run == false) {
+        document.querySelector('#startbtn').value = 'Stop';
         run = true;
     } else if (run == true) {
+        document.querySelector('#startbtn').value = 'Start';
         run = false;
     }
     if (run==true) {
@@ -51,6 +48,11 @@ function reset(){
         var rstcol=document.getElementById(i);
         rstcol.style.backgroundColor = 'white';
     }
+}
+
+function gridDeleation(){
+    $('.column').remove();
+    $('.row').remove();
 }
 
 //run to create the grid
@@ -76,6 +78,7 @@ function gridCreation() {
             //makes tiles clickable
             row.addEventListener('click', function(){
                 //changes color of tile
+                color = document.getElementById('colorButton').value;
                 row.style.backgroundColor = color;
 
                 //changes tile state and updates array
@@ -88,6 +91,7 @@ function gridCreation() {
             j++;
         }
     }
+    changeColors();
 }
 
 //updates cells
@@ -96,7 +100,7 @@ function cellUpdate() {
     for (let i =0; i < dimension *dimension; i++) {
         if (run == true && k < dimension*dimension) {
             let count = 0;
-            if (run==true){
+            if (k%dimension != 0 && (k+1)%dimension != 0){
                 if (lifeArray[k-1]==1) {
                     count++;
                 }
@@ -119,6 +123,38 @@ function cellUpdate() {
                     count++;
                 }
                 if (lifeArray[k+dimension+1]==1) {
+                    count++;
+                }
+            } else if (k%dimension == 0) {
+                if (lifeArray[k+1]==1) {
+                    count++;
+                }
+                if (lifeArray[k-dimension]==1) {
+                    count++;
+                }
+                if (lifeArray[k-dimension+1]==1) {
+                    count++;
+                }
+                if (lifeArray[k+dimension]==1) {
+                    count++;
+                }
+                if (lifeArray[k+dimension+1]==1) {
+                    count++;
+                }
+            } else if ((k+1)%dimension == 0) {
+                if (lifeArray[k-1]==1) {
+                    count++;
+                }
+                if (lifeArray[k-dimension]==1) {
+                    count++;
+                }
+                if (lifeArray[k-dimension-1]==1) {
+                    count++;
+                }
+                if (lifeArray[k+dimension]==1) {
+                    count++;
+                }
+                if (lifeArray[k+dimension-1]==1) {
                     count++;
                 }
             }
@@ -151,6 +187,7 @@ function cellUpdate() {
 
 //changes background color of cells based on game rules
 function changeColors() {
+    color = document.getElementById('colorButton').value;
     for (let l=0; l < dimension*dimension; l++) {
         if (placeHolder[l] ==0) {
             var col=document.getElementById(l);
@@ -161,3 +198,5 @@ function changeColors() {
         }
     }
 }
+
+gridCreation();

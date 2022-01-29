@@ -1,5 +1,6 @@
 *{
     background-color: #ededed;
+    font-family: 'Courier New', monospace;
 }
 
 .flex-container{
@@ -14,6 +15,7 @@
 .title{
     text-align: center;
     color: black;
+    font-size: 25px;
 }
 
 .controll-panel{
@@ -24,10 +26,36 @@
     height: 60vh;
     justify-content: space-evenly;
     margin-left: 5vw;
+    color:#878787;
+}
+
+.heading{
+    color: black;
+}
+
+.size-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.size-inputs{
+}
+
+.start-style{
+    margin-top: 10px;
+    margin-bottom: 5px;
+    width: 100px;
 }
 
 .buttons-container{
+    display: flex;
     flex-direction: column;
+}
+
+
+
+.btn-Style{
+    width: 100px;
 }
 
 .grid-container{
@@ -36,8 +64,8 @@
     margin-left: 20px;
     height: 95vh;
     width: 95vh;
-    background-color: lightgray;
-    border: 2px solid black;
+    border: 1px solid black;
+    background-color: white;
 }
 
 .column{
@@ -53,6 +81,3 @@
     border: 1px solid black;
 }
 
-.clicked{
-    background-color: darkgray;
-}
