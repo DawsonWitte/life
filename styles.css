@@ -38,9 +38,6 @@
     flex-direction: column;
 }
 
-.size-inputs{
-}
-
 .start-style{
     margin-top: 10px;
     margin-bottom: 5px;
@@ -56,6 +53,10 @@
 
 .btn-Style{
     width: 100px;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    box-shadow: black;
 }
 
 .grid-container{
